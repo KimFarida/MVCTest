@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a class="sidebar-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <i class="mdi mdi-all-inclusive"></i><span class="hide-menu"> Logout </span>
+        </a>
+
+    </li>
+}
+else
+{
+    <li class="sidebar-item">
+        <a class="sidebar-link" id="login" asp-area="Identity" asp-page="/Account/Login">
+            <i class="mdi mdi-all-inclusive"></i><span class="hide-menu"> Login </span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a class="sidebar-link" id="login" asp-area="Identity" asp-page="/Account/Register">
+            <i class="mdi mdi-all-inclusive"></i><span class="hide-menu"> Register </span>
+        </a>
+    </li>
+}
+
+
